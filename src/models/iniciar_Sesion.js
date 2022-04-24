@@ -9,8 +9,7 @@ const inicioSchema=mongoose.Schema({
     contraseña_usuario:{
         type:String,
         required:true
-
     }
 
 });
-module.exports =mongoose.model('inciar_', inicioSchema);
+module.exports =mongoose.model('Incio', inicioSchema);
