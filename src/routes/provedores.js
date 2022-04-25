@@ -16,7 +16,7 @@ router.post("/provedores", (req,res) => {
  //consultar clientes
  router.get("/provedores", ( req, res) => {
      provedorSchema.find()
-     .then((data) => res.json((data)))
+     .then((data) => res.json(data))
      .catch((error) => res.json({message:error}));
  });
 

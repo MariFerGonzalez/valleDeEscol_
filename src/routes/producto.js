@@ -16,16 +16,16 @@ module.exports= router;
 //consultar Productos
 router.get("/producto",(req,res)=>
 {
- schemaProducto.find()
- .then((data)=>res.json((data)))
+    prodcutoSchema.find()
+ .then((data)=>res.json(data))
  .catch((error)=>res.json({ message:error }));
 });
 
 //consultar Producto por id
 router.get("/producto/:id", (req, res) =>{
     const { id } = req.params;
-    schemaProducto
-       .findByID(id)
+    prodcutoSchema
+       .findById(id)
        .then((data) => res.json(data))
        .catch((error) => res.json({ message: error}));
 
@@ -34,7 +34,7 @@ router.get("/producto/:id", (req, res) =>{
  router.put("/producto/:id", (req, res) => {
     const { id } = req.params;
     const {nombre_prodcuto, stock} = req.body;
-    schemaProducto
+    prodcutoSchema
        .updateOne({ _id: id}, {
            $set: {nombre_producto, stock}
        })
@@ -45,7 +45,7 @@ router.get("/producto/:id", (req, res) =>{
 //eliminar producto por id
 router.delete("/producto/:id", (req, res) => {
     const { id } = req.params;
-    schemaProducto
+    prodcutoSchema
        .remove({ _id: id})
        .then((data) => res.json(data))
        .catch((error) => res.json({ message: error}));
