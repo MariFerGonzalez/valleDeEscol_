@@ -8,23 +8,23 @@ router.post("/cliente", (req,res) => {
     clientes
      .save()
      .then((data)=> res.json(data))
-     .catch((error)=>res.json({message: error}))
+     .catch((error)=>res.json({message: error}));
  });
  
  module.exports = router;
 
  //consultar clientes
  router.get("/cliente", ( req, res) => {
-     schemaClient.find()
-     .then((data) => res.json((data)))
+     clientSchema.find()
+     .then((data) => res.json(data))
      .catch((error) => res.json({message:error}));
  });
 
  //consultar cliente por id
  router.get("/cliente/:id", (req, res) =>{
      const { id } = req.params;
-     schemaClient
-        .findByID(id)
+     clientSchema
+        .findById(id)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error}));
 
@@ -34,7 +34,7 @@ router.post("/cliente", (req,res) => {
  router.put("/cliente/:id", (req, res) => {
      const { id } = req.params;
      const {nombre_cliente,correo,direccion,telefono,nit} = req.body;
-     schemaClient
+     clientSchema
         .updateOne({ _id: id}, {
             $set: {nombre_cliente,correo, direccion,telefonon,nit}
         })
@@ -45,7 +45,7 @@ router.post("/cliente", (req,res) => {
  //eliminar cliente por id
  router.delete("/cliente/:id", (req, res) => {
      const { id } = req.params;
-     schemaClient
+     clientSchema
         .remove({ _id: id})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error}));
