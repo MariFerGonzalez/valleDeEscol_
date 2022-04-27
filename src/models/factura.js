@@ -11,10 +11,12 @@ usuario_factura:{
     ref:'cliente',
     required: true
 },
-producto_factura:[{
+
+producto_factura:{
     type:mongoose.Types.ObjectId,
     ref:'Producto',
     required:true
-}],
+},
+
 });
 module.exports = mongoose.model('factura', facturaSchema);
